@@ -1,11 +1,10 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomLinkedList {
     private Node head;
 
-    public void addTask(Task task) {
+    public void addTask(Task task, Boolean printMessage) {
         Node newNode = new Node(task);
         if (head == null) {
             head = newNode;
@@ -16,35 +15,48 @@ public class CustomLinkedList {
             }
             current.next = newNode;
         }
+
+        if (printMessage) {
+            System.out.println("\nTask " + task.name + " added successfully");
+        }
     }
 
     public void deleteTask(String taskName) {
-        if (head == null) return;
-
-        if (head.task.name.equalsIgnoreCase(taskName)) {
-            head = head.next;
+        if (head == null) {
+            System.out.println("Task list is empty.");
             return;
         }
-
+    
+        if (head.task.name.equalsIgnoreCase(taskName)) {
+            head = head.next;
+            System.out.println("\nTask '" + taskName + "' deleted successfully!");
+            return;
+        }
+    
         Node current = head;
         while (current.next != null && !current.next.task.name.equalsIgnoreCase(taskName)) {
             current = current.next;
         }
-
+    
         if (current.next != null) {
             current.next = current.next.next;
+            System.out.println("\nTask '" + taskName + "' deleted successfully!");
+        } else {
+            System.out.println("\nTask '" + taskName + "' not found!");
         }
     }
-
+    
     public void markTaskAsCompleted(String taskName) {
         Node current = head;
         while (current != null) {
             if (current.task.name.equalsIgnoreCase(taskName)) {
                 current.task.isCompleted = true;
+                System.out.println("\nTask '" + taskName + "' has been marked as completed");
                 return;
             }
             current = current.next;
         }
+        System.out.println("\nTask '" + taskName + "' not found");
     }
 
     public Task searchTask(String taskName) {
@@ -74,7 +86,7 @@ public class CustomLinkedList {
 
     public void displayTasks(String filter, String todayDate) {
         Node current = head;
-        System.out.println("Tasks (" + filter + "):");
+        System.out.println("\n----- Tasks (" + filter + ") ----- \n");
 
         while (current != null) {
             Task task = current.task;

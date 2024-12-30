@@ -1,4 +1,3 @@
-
 public class Node {
     Task task;
     Node next;

@@ -1,4 +1,3 @@
-
 public class CustomExceptions {
 
     public static class TaskNotFoundException extends Exception {
