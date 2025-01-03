@@ -57,11 +57,15 @@ public class TaskManagementSystem {
                 case 8:
                     taskList.sortTasksByPriority();
                     System.out.println("Tasks sorted by priority.");
+
+                    taskList.displayTasks("all", todayDate);
                     break;
 
                 case 9:
                     taskList.sortTasksByDueDate();
                     System.out.println("Tasks sorted by due date.");
+
+                    taskList.displayTasks("all", todayDate);
                     break;
 
                 case 10:
