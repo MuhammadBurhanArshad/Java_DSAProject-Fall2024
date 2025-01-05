@@ -18,7 +18,15 @@ public class TaskManagementSystem {
                     String taskName = TaskUtils.getValidTaskName();
                     String dueDate = TaskUtils.getValidDate();
                     String category = TaskUtils.getValidCategory();
-                    int priority = TaskUtils.getValidIntInput("Enter task priority (1-5): ");
+                    int priority;
+                    while (true) {
+                        priority = TaskUtils.getValidIntInput("Enter task priority (1-5): ");
+                        if (priority >= 1 && priority <= 5) {
+                            break;
+                        } else {
+                            System.out.println("Invalid priority. Please enter a value between 1 and 5.");
+                        }
+                    }                    
                     taskList.addTask(new Task(taskName, dueDate, category, priority, false), true);
                     break;
 
@@ -73,8 +81,13 @@ public class TaskManagementSystem {
                     break;
 
                 case 11:
-                    System.out.println("Exiting program...");
-                    return;
+                String taskCategory = TaskUtils.getInput("Enter category to filter tasks (e.g., School, Personal, Work): ");
+                taskList.displayTasksByCategory(taskCategory);
+                
+                break;
+            case 12:
+                System.out.println("Exiting program...");
+                return; 
             }
         }
     }

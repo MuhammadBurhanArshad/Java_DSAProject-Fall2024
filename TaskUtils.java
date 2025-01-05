@@ -14,7 +14,8 @@ public class TaskUtils {
         System.out.println("8. Sort Tasks by Priority");
         System.out.println("9. Sort Tasks by Due Date");
         System.out.println("10. View Statistics");
-        System.out.println("11. Exit");
+        System.out.println("11. View by Category");
+        System.out.println("12. Exit");
     }
 
     public static int getValidIntInput(String prompt) {
@@ -24,10 +25,10 @@ public class TaskUtils {
             try {
                 System.out.print(prompt);
                 input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 11) {
+                if (input >= 1 && input <= 12) {
                     return input;
                 } else {
-                    System.out.println("Invalid option, please choose between 1 and 11.");
+                    System.out.println("Invalid option, please choose between 1 and 12.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input, please enter a number.");

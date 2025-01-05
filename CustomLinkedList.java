@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class CustomLinkedList {
     private Node head;
 
@@ -70,18 +67,22 @@ public class CustomLinkedList {
         return null;
     }
 
-    public List<Task> getTasksByCategory(String category) {
-        List<Task> tasksInCategory = new ArrayList<>();
+    public void displayTasksByCategory(String category) {
         Node current = head;
-
+        boolean found = false;
+    
+        System.out.println("\nTasks in category: " + category + "\n");
         while (current != null) {
             if (current.task.category.equalsIgnoreCase(category)) {
-                tasksInCategory.add(current.task);
+                current.task.displayTask();
+                found = true;
             }
             current = current.next;
         }
-
-        return tasksInCategory;
+    
+        if (!found) {
+            System.out.println("No tasks found in the category: " + category);
+        }
     }
 
     public void displayTasks(String filter, String todayDate) {
